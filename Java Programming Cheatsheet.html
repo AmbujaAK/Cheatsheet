@@ -1,0 +1,2237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0051)https://introcs.cs.princeton.edu/java/11cheatsheet/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="apple-touch-icon" href="https://introcs.cs.princeton.edu/apple-touch-icon.png">
+<link rel="shortcut icon" href="https://introcs.cs.princeton.edu/favicon.ico">
+
+<link rel="stylesheet" href="./Java Programming Cheatsheet_files/introcs.css" type="text/css" media="screen">
+
+<meta name="google-site-verification" content="nYspbl5bNBQrNZKguiAAFTMVM7sq2P1WQYc8Oi6Okl0">
+<meta name="msvalidate.01" content="D4B7F6DF793EFF34DE96F611C2A367A5">
+<!-- IE HACKS -->
+<!--[if IE]>
+<style type="text/css" media="screen">
+ #menu ul li {float: left; width: 100%;}
+</style>
+<![endif]-->
+<!--[if lt IE 7]>
+<style type="text/css" media="screen">
+body {
+behavior: url(/csshover.htc);
+} 
+#menu ul li {float: left; width: 100%;}
+#menu ul li a {height: 1%;} 
+
+#menu a, #menu h2 {
+font: bold 0.9em/1.5em arial, helvetica, sans-serif;
+} 
+
+</style>
+<![endif]-->
+
+<!--  use // instead of https:// or http:// to let it use whatever was used to access the page initially -->
+<script async="" src="https://cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="./Java Programming Cheatsheet_files/cse.js.download"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="./Java Programming Cheatsheet_files/MathJax.js.download" id=""></script>
+
+<!-- scale font size for MathJax -->
+<script type="text/x-mathjax-config;executed=true"> 
+    MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 90, linebreaks: { automatic: true } }, 
+        SVG: { linebreaks: { automatic:true } }, 
+        displayAlign: "left" });
+</script>
+
+<title>
+Java Programming Cheatsheet</title>
+<script type="text/javascript" src="./Java Programming Cheatsheet_files/swfobject.js.download"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10811519-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<meta name="AUTHOR" content="Robert Sedgewick and Kevin Wayne">
+<meta name="KEYWORDS" content="Java Programming Cheatsheet,Java,Programming,interdisciplinary,Computer science,cs,intro,introduction,sedgewick,wayne">
+<meta name="DESCRIPTION" content="This textbook provides an interdisciplinary approach to the CS 1 curriculum. We teach the classic elements of programming, using an " objects-in-the-middle"="" approach="" that="" emphasizes="" data="" abstraction.="" a="" key="" feature="" of="" the="" book="" is="" manner="" in="" which="" we="" motivate="" each="" programming="" concept="" by="" examining="" its="" impact="" on="" specific="" applications,="" taken="" from="" science,="" engineering,="" and="" commerce."="">
+<meta name="TITLE" content="Java Programming Cheatsheet. Introduction to Programming in Java by Sedgewick and Wayne">
+<meta name="ROBOTS" content="INDEX,FOLLOW">
+<meta name="verify-v1" content="D4o9ikkHbNKapHncCP8ZmiD9Z2DBbrJyaSV0lyce+3w=">
+
+
+<style type="text/css">:root #content > #center > .dose > .dosesingle,
+:root #content > #right > .dose > .dosesingle
+{display:none !important;}</style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script src="./Java Programming Cheatsheet_files/jsapi" type="text/javascript"></script><link type="text/css" href="./Java Programming Cheatsheet_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Java Programming Cheatsheet_files/default.css" rel="stylesheet"><script type="text/javascript" src="./Java Programming Cheatsheet_files/default+en.I.js.download"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input {
+border-color: #D9D9D9;
+}
+input.gsc-search-button {
+border-color: #666666;
+background-color: #CECECE;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-top-color: #FF9900;
+border-left-color: #E9E9E9;
+border-right-color: #E9E9E9;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #E9E9E9;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result.gsc-promotion:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #0000CC;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #0000CC;
+}
+.gsc-cursor-page {
+color: #0000CC;
+}
+a.gsc-trailing-more-results:link {
+color: #0000CC;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #000000;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #008000;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #FF9900;
+background-color: #FFFFFF;
+color: #0000CC;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #0000CC;
+}
+.gsc-completion-snippet {
+color: #000000;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000CC;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000CC;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}
+.gsc-input input.gsc-input {
+background: none repeat scroll 0% 0% white !important;
+}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gscsep_a{display:none}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 7px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+
+
+
+
+
+<body><div id="MathJax_Message" style="display: none;"></div>
+
+<div id="menu">
+   <div align="center">
+<a class="picture" href="https://introcs.cs.princeton.edu/home">
+<img src="./Java Programming Cheatsheet_files/cover.png" width="190" height="235" border="0" alt="Introduction to Programming in Java">
+</a>
+</div>
+
+
+
+
+
+
+<ul>
+  <li><a class="title" href="https://introcs.cs.princeton.edu/java/home">Intro to Programming</a>
+    <ul>
+
+      <li> <a href="https://introcs.cs.princeton.edu/java/10elements">1.&nbsp;&nbsp;Elements of Programming</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/11hello">1.1&nbsp;&nbsp;Your First Program</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/12types">1.2&nbsp;&nbsp;Built-in Types of Data</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/13flow">1.3&nbsp;&nbsp;Conditionals and Loops</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/14array">1.4&nbsp;&nbsp;Arrays</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/15inout">1.5&nbsp;&nbsp;Input and Output</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/16pagerank">1.6&nbsp;&nbsp;Case Study: PageRank</a>
+        </li></ul>
+
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/20functions">2.&nbsp;&nbsp;Functions</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/21function">2.1&nbsp;&nbsp;Static Methods</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/22library">2.2&nbsp;&nbsp;Libraries and Clients</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/23recursion">2.3&nbsp;&nbsp;Recursion</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/24percolation">2.4&nbsp;&nbsp;Case Study: Percolation</a>
+        </li></ul>
+
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/30oop">3.&nbsp;&nbsp;OOP</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/31datatype">3.1&nbsp;&nbsp;Using Data Types</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/32class">3.2&nbsp;&nbsp;Creating Data Types</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/33design">3.3&nbsp;&nbsp;Designing Data Types</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/34nbody">3.4&nbsp;&nbsp;Case Study: N-Body</a>
+        </li></ul>
+
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/40algorithms">4.&nbsp;&nbsp;Data Structures</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/41analysis">4.1&nbsp;&nbsp;Performance</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/42sort">4.2&nbsp;&nbsp;Sorting and Searching</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/43stack">4.3&nbsp;&nbsp;Stacks and Queues</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/44st">4.4&nbsp;&nbsp;Symbol Tables</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/45graph">4.5&nbsp;&nbsp;Case Study: Small World</a>
+        </li></ul>
+    </li></ul>
+</li></ul>
+
+
+
+
+
+<ul>
+  <li><a class="title" href="https://introcs.cs.princeton.edu/java/cs">Computer Science</a>
+    <ul>
+
+      <li> <a href="https://introcs.cs.princeton.edu/java/50theory">5.&nbsp;&nbsp;Theory of Computing</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/51language">5.1&nbsp;&nbsp;Formal Languages</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/52turing">5.2&nbsp;&nbsp;Turing Machines</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/53universality">5.3&nbsp;&nbsp;Universality</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/54computability">5.4&nbsp;&nbsp;Computability</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/55intractability">5.5&nbsp;&nbsp;Intractability</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/99crypto">9.9&nbsp;&nbsp;Cryptography</a>
+        </li></ul>
+
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/60machine">6.&nbsp;&nbsp;A Computing Machine</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/61data">6.1&nbsp;&nbsp;Representing Info</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/62toy">6.2&nbsp;&nbsp;TOY Machine</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/63programming">6.3&nbsp;&nbsp;TOY Programming</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/64simulator">6.4&nbsp;&nbsp;TOY Virtual Machine</a>
+        </li></ul>
+
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/70circuits">7.&nbsp;&nbsp;Building a Computer</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/71boolean">7.1&nbsp;&nbsp;Boolean Logic</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/72circuit">7.2&nbsp;&nbsp;Basic Circuit Model</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/73combinational">7.3&nbsp;&nbsp;Combinational Circuits</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/74sequential">7.4&nbsp;&nbsp;Sequential Circuits</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/75architecture">7.5&nbsp;&nbsp;Digital Devices</a>
+        </li></ul>
+    </li></ul>
+</li></ul>
+
+
+
+<ul>
+  <li><a class="title" href="https://introcs.cs.princeton.edu/java/home">Beyond</a>
+    <ul>
+
+      <li> <a href="https://introcs.cs.princeton.edu/java/80systems">8.&nbsp;&nbsp;Systems</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/81library">8.1&nbsp;&nbsp;Library Programming</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/82compiler">8.2&nbsp;&nbsp;Compilers</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/83os">8.3&nbsp;&nbsp;Operating Systems</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/84network">8.4&nbsp;&nbsp;Networking</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/85application">8.5&nbsp;&nbsp;Applications Systems</a>
+        </li></ul>
+
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/90scientific">9.&nbsp;&nbsp;Scientific Computation</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/91float">9.1&nbsp;&nbsp;Floating Point</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/92symbolic">9.2&nbsp;&nbsp;Symbolic Methods</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/93integration">9.3&nbsp;&nbsp;Numerical Integration</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/94diffeq">9.4&nbsp;&nbsp;Differential Equations</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/95linear">9.5&nbsp;&nbsp;Linear Algebra</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/96optimization">9.6&nbsp;&nbsp;Optimization</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/97data">9.7&nbsp;&nbsp;Data Analysis</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/98simulation">9.8&nbsp;&nbsp;Simulation</a>
+        </li></ul>
+    </li></ul>
+</li></ul>
+
+
+
+
+
+
+
+<ul>
+
+<li><a class="title"> Related Booksites</a>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr>
+<td align="center">
+<a class="booksite" href="https://introcs.cs.princeton.edu/python">
+   <img src="./Java Programming Cheatsheet_files/cover-python.png" width="73" height="91" border="0" alt="Introduction to Programming in Python
+               by Robert Sedgewick, Kevin Wayne, and Robert Dondero">
+</a>
+</td><td align="center">
+<a class="booksite" href="https://algs4.cs.princeton.edu/">
+   <img src="./Java Programming Cheatsheet_files/cover(1).png" width="73" height="91" border="0" alt="Algorihtms, 4th Edition by Robert Sedgewick and Kevin Wayne">
+</a>
+</td></tr>
+</tbody></table>
+
+
+  </li><li><a class="title" href="https://introcs.cs.princeton.edu/home">Web Resources</a>
+    <ul>
+
+      <li> <a href="https://introcs.cs.princeton.edu/java/faq">FAQ</a>
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/data">Data</a>
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/code">Code</a>
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/errata">Errata</a>
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/11appendix">Appendices</a>
+        <ul>
+          <li> <a href="https://introcs.cs.princeton.edu/java/11precedence">A. &nbsp; Operator Precedence</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/11style">B. &nbsp; Writing Clear Code</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/11glossary">C. &nbsp; Glossary</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/11cheatsheet">D. &nbsp; Java Cheatsheet</a>
+          </li><li> <a href="https://introcs.cs.princeton.edu/java/11matlab">E. &nbsp; Matlab</a>
+        </li></ul>
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/lectures">Lecture Slides</a>
+      </li><li> <a href="https://introcs.cs.princeton.edu/java/assignments">Programming Assignments</a>
+   </li></ul>
+
+
+</li></ul>
+
+<p><br>
+
+
+<script>
+  (function() {
+    var cx = '005649317310637734940:_d158dlngnk';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div id="___gcse_0"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-en" dir="ltr"><form class="gsc-search-box" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><input autocomplete="off" type="text" size="10" class=" gsc-input" name="search" title="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="outline: none;"><input type="hidden" name="bgresponse" id="bgresponse"></td><td class="gsc-search-button"><input type="button" value="Search" class="gsc-search-button" title="search"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr style="display: none;"><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="./Java Programming Cheatsheet_files/googlelogo_grey_46x15dp.png" class="gsc-branding-img" srcset="https://www.google.com/cse/static/images/2x/googlelogo_grey_46x15dp.png 2x"></td></tr></tbody></table></form></div></div>
+
+</p><p><br>
+</p></div>
+
+<div id="content">
+   <style type="text/css" media="screen">
+
+img.scale {
+    zoom: 40%;
+    -moz-transform: scale(0.4);
+    -moz-transform-origin: 0 0;
+}
+</style>
+
+
+<h1>Appendix D:  &nbsp; Java Programming Cheatsheet</h1>
+
+<p><br>
+
+This appendix summarizes the most commonly-used Java language
+features in the textbook. Here are the 
+<a href="https://introcs.cs.princeton.edu/java/11cheatsheet/api.pdf">APIs</a> of the most common libraries.
+
+</p><p>
+<br>
+
+
+</p><h3 id="HelloWorld">Hello, World.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/hello.png" alt="Hello, World in Java">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="EditCompileExecute">Editing, compiling, and executing.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/developing.png" alt="Compiling Hello, World in Java">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="BuiltInTypes">Built-in data types.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/built-in.png" alt="Built-in types of data">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="AssignmentStatements">Declaration and assignment statements.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/assignment.png" alt="Assignment statements">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="int">Integers.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/int.png" alt="int data type">
+</blockquote>
+
+<p>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/int-expressions.png" alt="Integer expressions">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="double">Floating-point numbers.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/double.png" alt="double data type">
+</blockquote>
+
+<p>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/double-expressions.png" alt="double expressions">
+</blockquote>
+
+
+
+
+<p><br>
+</p><h3 id="boolean">Booleans.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/boolean.png" alt="boolean data type">
+</blockquote>
+
+<p>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/boolean-ops.png" alt="Boolean operators">
+</blockquote>
+
+
+
+<p><br>
+</p><h3 id="ComparisonOperators">Comparison operators.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/comparison-ops.png" alt="Comparison operators">
+</blockquote>
+
+<p>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/comparison-expressions.png" alt="Comparison examples">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="SystemOut">Printing.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/system.out.print-api.png" alt="System.out.print()">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="CommandLineArguments">Parsing command-line arguments.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/parse-api.png" alt="parsing Command-line arguments">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="Math">Math library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/math-api.png" alt="Math library API">
+</blockquote>
+
+The full <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Math.html">java.lang.Math API</a>.
+
+<p><br>
+</p><h3 id="JavaLibary">Java library calls.</h3>
+<p>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/library-calls.png" alt="Expressions that use Java library methods">
+</blockquote>
+
+
+
+
+<p><br>
+</p><h3 id="TypeConversion">Type conversion.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/casts.png" alt="Type conversion">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="If">Anatomy of an if statement.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/if.png" alt="anatomy of an if statement">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="IfElse">If and if-else statements.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/if-else.png" alt="If-else statements">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="NestedIfElse">Nested if-else statement.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/nested-if-else.png" alt="Nested if-else statements in Java">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="WhileLoops">Anatomy of a while loop.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/while.png" alt="While loop">
+</blockquote>
+
+<p><br>
+</p><h3 id="ForLoops">Anatomy of a for loop.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/for.png" alt="For loop">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="Loops">Loops.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/for-while.png" alt="While and for loops in Java">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="break">Break statement.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/break.png" alt="Break statement in Java">
+</blockquote>
+
+<p><br>
+</p><h3 id="do-while">Do-while loop.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/do-while.png" alt="Do-while loop in Java">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="switch">Switch statement.</h3>
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/switch.png" alt="Switch statement in Java">
+</blockquote>
+
+
+
+<p><br>
+</p><h3 id="Arrays">Arrays.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/array.png" alt="An array">
+</blockquote>
+
+<p>
+Inline array initialization.
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/array-init.png" alt="Inline initialization of arrays">
+</blockquote>
+
+Typical array-processing code.
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/array-examples.png" alt="Typical array-processing code">
+</blockquote>
+
+
+<h3 id="Arrays2D">Two-dimensional arrays.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/array2d.png" alt="2D array">
+</blockquote>
+
+Inline initialization.
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/array2d-init.png" alt="2D array inline initialization">
+</blockquote>
+
+<a id="stdlib"></a>
+<p><br>
+</p><h3 id="StdOut">Our standard output library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stdout-api.png" alt="Standard output API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdOut.html">StdOut API</a>.
+
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/printf.png" alt="Anatomy of printf">
+</blockquote>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/printf-formatting.png" alt="Formatting codes for printf">
+</blockquote>
+
+
+
+<p><br>
+</p><h3 id="StdIn">Our standard input library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stdin-api.png" alt="Standard input API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdIn.html">StdIn API</a>.
+
+
+
+<p><br>
+</p><h3 id="StdDraw">Our standard drawing library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stddraw-api.png" alt="Standard drawing API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html">StdDraw API</a>.
+
+
+
+<p><br>
+</p><h3 id="StdAudio">Our standard audio library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stdaudio-api.png" alt="Standard audio API">
+</blockquote>
+
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdAudio.html">StdAudio API</a>.
+
+
+<p><br>
+</p><h3 id="CommandLine">Command line.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/command.png" alt="command line">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="RedirectionPiping">Redirection and piping.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/redirect-stdout.png" alt="Redirecting standard output">
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+<img class="scale" src="./Java Programming Cheatsheet_files/redirect-stdin.png" alt="Redirecting standard input">
+</blockquote>
+
+<p><br>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/piping.png" alt="Piping">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="Functions">Functions.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/function.png" alt="Anatomy of a function">
+</blockquote>
+
+<p>
+</p><blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/function-examples.png" alt="Example functions">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="StaticLibraries">Libraries of functions.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/library.png" alt="Library abstraction">
+</blockquote>
+
+<p><br>
+</p><h3 id="StdRandom">Our standard random library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stdrandom-api.png" alt="Standard random">
+</blockquote>
+
+<p><br>
+</p><h3 id="StdStats">Our standard statistics library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stdstats-api.png" alt="Standard statistics">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="UsingObjects">Using an object.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/object.png" alt="Using an object">
+</blockquote>
+
+
+<p><br>
+</p><h3 id="InstanceVariables">Instance variables.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/instance-variables.png" alt="Anatomy of instance variables">
+</blockquote>
+
+<p><br>
+</p><h3 id="Constructors">Constructors.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/constructor.png" alt="Anatomy of a constructor">
+</blockquote>
+
+<p><br>
+</p><h3 id="InstanceMethods">Instance methods.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/instance-method.png" alt="Anatomy of an instance method">
+</blockquote>
+
+<p><br>
+</p><h3 id="Classes">Classes.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/class.png" alt="Anatomy of a class">
+</blockquote>
+
+<p><br>
+</p><h3 id="ObjectLibraries">Object-oriented libraries.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/library-oop.png" alt="Object-oriented library abstraction">
+</blockquote>
+
+
+
+<p></p><h3 id="String">Java's String data type.</h3>
+
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/string-api.png" alt="String library API">
+</blockquote>
+
+The full <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html">java.lang.String API</a>.
+
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/string-ops.png" alt="String operations">
+</blockquote>
+
+<p></p><h3 id="Color">Java's Color data type.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/color-api.png" alt="Color library API">
+</blockquote>
+
+The full <a href="http://docs.oracle.com/javase/6/docs/api/java/awt/Color.html">java.awt.Color API</a>.
+
+<p><br>
+</p><h3 id="In">Our input library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/in-api.png" alt="Input API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/In.html">In API</a>.
+
+<p><br>
+</p><h3 id="Out">Our output library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/out-api.png" alt="Output API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/Out.html">Out API</a>.
+
+<p><br>
+</p><h3 id="Picture">Our picture library.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/picture-api.png" alt="Picture API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/stdlib/javadoc/Picture.html">Picture API</a>.
+
+<p><br>
+</p><h3 id="Stack">Our stack data type.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/stack-api.png" alt="Stack API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/code/javadoc/Stack.html">Stack API</a>.
+
+<p><br>
+</p><h3 id="Queue">Our queue data type.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/queue-api.png" alt="Queue API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/code/javadoc/Queue.html">Queue API</a>.
+
+<p><br>
+</p><h3 id="Iterable">Iterable.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/iterable-anatomy.png" alt="Anatomy of an iterable">
+</blockquote>
+
+<p><br>
+</p><h3 id="ST">Our symbol table data type.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/st-api.png" alt="Symbol Table API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/code/javadoc/ST.html">ST API</a>.
+
+
+<p><br>
+</p><h3 id="Set">Our set data type.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/set-api.png" alt="Set API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/code/javadoc/SET.html">SET API</a>.
+
+<p><br>
+</p><h3 id="Graph">Our graph data type.</h3>
+
+<blockquote>
+<img class="scale" src="./Java Programming Cheatsheet_files/graph-api.png" alt="Graph API">
+</blockquote>
+
+The full <a href="https://introcs.cs.princeton.edu/java/code/javadoc/Graph.html">Graph API</a>.
+
+
+<p><br>
+</p><h3 id="Errors">Compile-time and run-time errors.</h3>
+Here's a <a href="https://introcs.cs.princeton.edu/java/11cheatsheet/errors.pdf">list of errors</a> compiled  by
+Mordechai Ben-Ari.
+<!-- http://stwww.weizmann.ac.il/g-cs/benari/java/errors.pdf  -->
+It includes a list of common error message and typical mistakes that
+give rise to them.
+
+
+
+<br><br>
+<p class="footer">
+<em>Last modified on February 28, 2017.</em><br><br>
+Copyright © 2000–2016
+<a href="https://www.cs.princeton.edu/~rs" class="footer">Robert Sedgewick</a>
+and
+<a href="https://www.cs.princeton.edu/~wayne" class="footer">Kevin Wayne</a>.
+All rights reserved.
+</p></div>
+
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="https://ssl.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10811519-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+
+
+
+
+
+
+
+
+ 
+<div class="cd-ext-browser-extension-container cd-ext-div" id="cd-ext-slider">
+
+    <!-- side panel drawer image -->
+    <!--hide the sticky-->
+    <!--<img class="cd-ext-btn-sticky cd-ext-img" src=chrome-extension:&#x2F;&#x2F;iledpgbdhgeianadegpmahgpieckekfp&#x2F;resources&#x2F;img&#x2F;coupondunia-sticker.png>-->
+    <div class="cd-ext-extension-header cd-ext-div cd-ext-hide">
+        <!--<a class="cd-ext-a" href="http://www.coupondunia.in/">-->
+            <div class="cd-ext-cd-logo cd-ext-div">
+                <img class="cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/header_logo.png">
+            </div>
+        <!--</a>-->
+        <div id="cd-ext-offers" class="cd-ext-main-header-tab cd-ext-tab-click cd-ext-div cd-ext-main-tab-selected" data-tab="cd-ext-offers-ctr">OFFERS
+            <div class="cd-ext-arrow-down cd-ext-main-header-tab-arrow"></div>
+        </div>
+        <div id="cd-ext-compare" class="cd-ext-main-header-tab cd-ext-tab-click cd-ext-extended-div cd-ext-div" data-tab="cd-ext-price-comparision-ctr">COMPARE
+            <div class="cd-ext-compare-count cd-ext-div cd-ext-hide"></div>
+            <div class="cd-ext-arrow-down cd-ext-main-header-tab-arrow"></div>
+        </div>
+        <div class="cd-ext-logged-in-header cd-ext-div cd-ext-show">
+            <div id="cd-ext-notification" class="cd-ext-ext-user-block cd-ext-tab-click cd-ext-notif-bell-div cd-ext-div" data-tab="cd-ext-notification-ctr">
+                <img class="cd-ext-notif-bell cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/notif.png">
+                <div class="cd-ext-bell-count cd-ext-div cd-ext-show">13</div>
+                <div class="cd-ext-arrow-down cd-ext-main-header-tab-arrow"></div>
+            </div>
+            <div class="cd-ext-ext-user-block cd-ext-user-info-ctr cd-ext-div cd-ext-header-user-block">
+                <img class="cd-ext-user-icon" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/default_user_icon.png">
+                <img class="cd-ext-header-cb-icon" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                <div class="cd-ext-cashback-value cd-ext-div">Rs. 213</div>
+                <img class="cd-ext-ext-user cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/white_user_triangle.png">
+            </div>
+            <div class="cd-ext-ext-user-block cd-ext-user-info-ctr cd-ext-div cd-ext-dropdown-user-block cd-ext-hide">
+                <img class="cd-ext-user-icon" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/default_user_icon.png">
+                <img class="cd-ext-header-cb-icon" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                <div class="cd-ext-cashback-value cd-ext-dropdown-cashback-value cd-ext-div">Rs. 213</div>
+                <img class="cd-ext-ext-user cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/black_user_triangle.png">
+            </div>
+        </div>
+        <div class="cd-ext-logged-out-header cd-ext-div cd-ext-hide">
+            <div id="cd-ext-notification" class="cd-ext-ext-user-block cd-ext-tab-click cd-ext-notif-bell-div cd-ext-div" data-tab="cd-ext-notification-ctr">
+                <img class="cd-ext-notif-bell cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/notif.png">
+                <div class="cd-ext-arrow-down cd-ext-main-header-tab-arrow"></div>
+            </div>
+            <div class="cd-ext-login-img-ctr cd-ext-j-login-label">
+                <img class="cd-ext-login-img cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/login.png">
+            </div>
+        </div>
+        <div class="cd-ext-div cd-ext-closcde-btn-div">
+            <img class="cd-ext-extension-closcde cd-ext-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cross.png">
+        </div>
+        <div class="cd-ext-user-settings-ctr">
+            <div class="cd-ext-user-setting">
+                <div class="cd-ext-user-name">Ambuj Kumar</div>
+                <!--<img class="cd-ext-user-icon" src=chrome-extension:&#x2F;&#x2F;iledpgbdhgeianadegpmahgpieckekfp&#x2F;resources&#x2F;img&#x2F;default_user_icon.png>-->
+                <!--<img class="cd-ext-ext-user cd-ext-img" src=>-->
+            </div>
+            <div class="cd-ext-user-detailed-cashback ">
+                <div class="cd-ext-user-confirmed-cashback cd-ext-user-cb">
+                    <div class="cd-ext-user-confirmed-cashback-text cd-ext-user-cb-div">Available</div>
+                    <img class="cd-ext-img cd-ext-dropdown-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                    <span class="cd-ext-user-confirmed-cashback-value cd-ext-user-cb-span">Rs.
+                        <span class="cd-ext-confirmed-cb">7</span></span>
+                </div>
+
+                <div class="cd-ext-user-pending-cashback cd-ext-user-cb">
+                    <div class="cd-ext-user-confirmed-cashback-text cd-ext-user-cb-div"> Pending</div>
+                    <img class="cd-ext-img cd-ext-dropdown-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                    <span class="cd-ext-user-pending-cashback-value cd-ext-user-cb-span"> Rs.
+                        <span class="cd-ext-pending-cb">206</span></span>
+                </div>
+            </div>
+            <div id="cd-ext-myaccount" class="cd-ext-user-setting">My Account</div>
+            <div id="cd-ext-mypricealerts" class="cd-ext-user-setting">My Price Alerts</div>
+
+            <div id="cd-ext-mysettings" class="cd-ext-user-setting">Settings</div>
+            <div id="cd-ext-rate-us" class="cd-ext-user-setting"><a class="cd-ext-a cd-ext-rate-us-link" href="https://chrome.google.com/webstore/detail/coupondunia-shopping-assi/iledpgbdhgeianadegpmahgpieckekfp/reviews" target="_blank">Rate Us</a></div>
+            <!--<div class="cd-ext-user-setting">My Price Alerts</div>-->
+            <div id="cd-ext-logout" class="cd-ext-user-setting">Log Out</div>
+        </div>
+    </div>
+    <div class="cd-ext-main-tab-content cd-ext-offers-ctr">
+        <div class="cd-ext-extension-tabs-container cd-ext-offer-tabs-header cd-ext-div cd-ext-hide">
+            <div id="cd-ext-store-offer-stab" class="cd-ext-secondary-header-tab cd-ext-div cd-ext-hide" data-tab="cd-ext-store-offer">
+                <div id="cd-ext-store-name-sub-tab" class="cd-ext-div cd-ext-offer-tab-title"> Offers</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+            <div id="cd-ext-top-offer-stab" class="cd-ext-secondary-header-tab cd-ext-div cd-ext-main-tab-selected" data-tab="cd-ext-top-offer">
+                <div class="cd-ext-offer-tab-title cd-ext-div">Top Offers</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+            <div id="cd-ext-top-cb-offer-stab" class="cd-ext-secondary-header-tab cd-ext-div" data-tab="cd-ext-top-cb-offer">
+                <div class="cd-ext-offer-tab-title cd-ext-div">Top Cashback Offers</div>
+                <div class="cd-ext-tab-bell-count cd-ext-div" id="cd-ext-j-tab-cb-count">6</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+        </div>
+        <div class="cd-ext-tab-content-ctr cd-ext-hide">
+            <!-- tab 1 store offers -->
+            <div class="cd-ext-j-store-offers">
+                <div id="cdext-merchant_offer-data-container" class="cd-ext-secondary-header-tab-content cd-ext-div cd-ext-store-offer cd-ext-hide">
+                    <div class="cd-ext-loader-big cd-ext-div">
+                        <div class="cd-ext-sk-folding-cube cd-ext-div">
+                            <div class="cd-ext-sk-cube1 cd-ext-sk-cube cd-ext-div"></div>
+                            <div class="cd-ext-sk-cube2 cd-ext-sk-cube cd-ext-div"></div>
+                            <div class="cd-ext-sk-cube4 cd-ext-sk-cube cd-ext-div"></div>
+                            <div class="cd-ext-sk-cube3 cd-ext-sk-cube cd-ext-div"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2 Top offers-->
+            <div class="cd-ext-j-top-offers">
+                <div id="cdext-top-deals-and-offers-container" class="cd-ext-secondary-header-tab-content cd-ext-div cd-ext-top-offer">    <!--heading-->
+    <div class="cd-ext-offers-sorting-header">
+        <div class="cd-ext-store-offer-header cd-ext-div" id="cd-ext-j-top-deals-head">Top Coupons &amp; Deals <span class="cd-ext-offer-count" id="cd-ext-j-top-offers-count">(9)</span></div>
+        <div class="cd-ext-custom-checkbox">
+            <input id="cd-ext-top-all" checked="" class="cd-ext-custom-input cd-ext-hide" type="radio" name="coupons" value="all">
+            <label class="cd-ext-custom-label" for="cd-ext-top-all"></label>
+            <span class="cd-ext-custom-label-span cd-ext-filter-heading cd-ext-span cd-ext-filter-span">All</span>
+            <input id="cd-ext-top-coupons" class="cd-ext-custom-input cd-ext-hide" type="radio" name="coupons" value="coupons">
+            <label class="cd-ext-custom-label" for="cd-ext-top-coupons"></label>
+            <span class="cd-ext-custom-label-span cd-ext-span cd-ext-filter-span">Coupons Only</span>
+        </div>
+    </div>
+    <!--heading-end-->
+    <div class="cd-ext-merchant-offers-ctr">
+
+        <!-- Top Coupons and deals start-->
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-PtqXpHlrss_PtqXpHlrss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-PtqXpHlrss_PtqXpHlrss" data-store-seo="swiggy">
+                    <img src="./Java Programming Cheatsheet_files/swiggy-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/swiggy?h=PtqXpHlrss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="PtqXpHlrss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Flat Rs. 100 Off on Food Orders of Rs. 299 (First Time Users)</div>
+                    </a>
+                    <div class="cd-ext-offer-validity">Valid till 31st Oct</div>
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;swiggy?h&#x3D;PtqXpHlrss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="PtqXpHlrss" class="cd-ext-view-details ">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="PtqXpHlrss_PtqXpHlrss">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-N00ZA2JJns_N00ZA2JJns">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-N00ZA2JJns_N00ZA2JJns" data-store-seo="ebay">
+                    <img src="./Java Programming Cheatsheet_files/ebay-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/ebay?h=N00ZA2JJns&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="N00ZA2JJns" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">CD Exclusive: Flat 10% Off on All Products</div>
+                    </a>
+                    <div class="cd-ext-offer-validity">Valid till 31st Oct</div>
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;ebay?h&#x3D;N00ZA2JJns&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="N00ZA2JJns" class="cd-ext-view-details ">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="N00ZA2JJns_N00ZA2JJns">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-xIxjXvHcss_xIxjXvHcss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-xIxjXvHcss_xIxjXvHcss" data-store-seo="paytm">
+                    <img src="./Java Programming Cheatsheet_files/paytm-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/paytm?h=xIxjXvHcss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="xIxjXvHcss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Upto Rs. 30 Cashback on Mobile Recharge/Bill Payments of Rs. 100 &amp; Above</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;paytm?h&#x3D;xIxjXvHcss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="xIxjXvHcss" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="xIxjXvHcss_xIxjXvHcss">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-itZtMJSnss_itZtMJSnss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-itZtMJSnss_itZtMJSnss" data-store-seo="tapzo">
+                    <img src="./Java Programming Cheatsheet_files/tapzo-top-store-logo.png" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/tapzo?h=itZtMJSnss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="itZtMJSnss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">CD&nbsp;Exclusive:&nbsp;Flat 55% Cashback on Your 1st Cab Ride</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;tapzo?h&#x3D;itZtMJSnss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="itZtMJSnss" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="itZtMJSnss_itZtMJSnss">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-jHnPrJiqss_jHnPrJiqss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-jHnPrJiqss_jHnPrJiqss" data-store-seo="paytm">
+                    <img src="./Java Programming Cheatsheet_files/paytm-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/paytm?h=jHnPrJiqss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="jHnPrJiqss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Flat Rs. 50 Cashback on Recharge &amp; Bill Payments of Rs. 100 &amp; Above (New Recharge Number)</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;paytm?h&#x3D;jHnPrJiqss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="jHnPrJiqss" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="jHnPrJiqss_jHnPrJiqss">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-pkr0NIHXps_pkr0NIHXps">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-pkr0NIHXps_pkr0NIHXps" data-store-seo="goibibo">
+                    <img src="./Java Programming Cheatsheet_files/goibibo-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/goibibo?h=pkr0NIHXps&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="pkr0NIHXps" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Upto 50% Off + 15% goCash Usage on Domestic Hotels</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;goibibo?h&#x3D;pkr0NIHXps&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="pkr0NIHXps" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="pkr0NIHXps_pkr0NIHXps">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-v3Npji0aMs_v3Npji0aMs">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-v3Npji0aMs_v3Npji0aMs" data-store-seo="pharmeasy">
+                    <img src="./Java Programming Cheatsheet_files/pharmeasy-top-store-logo.png" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/pharmeasy?h=v3Npji0aMs&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="v3Npji0aMs" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Exclusive: Flat 30% Off on Medicines + 10% Paytm Cashback (New Users)</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;pharmeasy?h&#x3D;v3Npji0aMs&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="v3Npji0aMs" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="v3Npji0aMs_v3Npji0aMs">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-deals-coupons-only " id="cd-ext-j-activated-ciiyviOkss_ciiyviOkss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-ciiyviOkss_ciiyviOkss" data-store-seo="barbequenation">
+                    <img src="./Java Programming Cheatsheet_files/barbequenation-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/barbequenation?h=ciiyviOkss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="ciiyviOkss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Book a Table via BBQ Nation App</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;barbequenation?h&#x3D;ciiyviOkss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="ciiyviOkss" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="ciiyviOkss_ciiyviOkss">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-riXNHcOtps_riXNHcOtps">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-riXNHcOtps_riXNHcOtps" data-store-seo="paytm">
+                    <img src="./Java Programming Cheatsheet_files/paytm-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/paytm?h=riXNHcOtps&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="riXNHcOtps" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Flat 50% Cashback on Minimum Booking of 2 Movie Tickets</div>
+                    </a>
+                    
+                    <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;paytm?h&#x3D;riXNHcOtps&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT" target="_blank" data-offerid="riXNHcOtps" class="cd-ext-view-details cd-ext-margin-left-two">View details </a>-->
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-deals-offer-ctr" id="riXNHcOtps_riXNHcOtps">Get Code</div>
+
+        </div>
+        <!-- Top Coupons and deals end-->
+
+
+
+        <!-- design when there are no offers for the selected filter-->
+        <div class="cd-ext-div cd-ext-hide" id="cd-ext-j-filter-top-deals-tab">
+            <div class="cd-ext-div cd-ext-no-offers-img"></div>
+            <div class="cd-ext-div cd-ext-no-offers-text">
+                <p class="cd-ext-p"> There are no results for the selected filter.</p>
+            </div>
+        </div>
+    </div>
+</div>
+             </div>
+
+            <!-- Tab 3 Top cashback offers-->
+            <div>
+                <div id="cd-ext-top-cashback-offers-container" class="cd-ext-secondary-header-tab-content cd-ext-div cd-ext-hide cd-ext-top-cb-offer">    <!-- heading -->
+    <div class="cd-ext-offers-sorting-header">
+        <div class="cd-ext-store-offer-header cd-ext-div" id="cd-ext-j-top-cb-header">Top Cashback Offers <span class="cd-ext-offer-count">(11)</span></div>
+        <div class="cd-ext-custom-checkbox">
+            <input id="cd-ext-top-cb-all" checked="" class="cd-ext-custom-input cd-ext-hide" type="radio" name="top-cb-coupons" value="all">
+            <label class="cd-ext-custom-label" for="cd-ext-top-cb-all"></label>
+            <span class="cd-ext-custom-label-span cd-ext-filter-heading cd-ext-span cd-ext-filter-span">All</span>
+            <input id="cd-ext-top-cb-coupons" class="cd-ext-custom-input cd-ext-hide" type="radio" name="top-cb-coupons" value="coupons">
+            <label class="cd-ext-custom-label" for="cd-ext-top-cb-coupons"></label>
+            <span class="cd-ext-custom-label-span cd-ext-span cd-ext-filter-span">Coupons Only</span>
+        </div>
+    </div>
+    <!-- heading -->
+    <div class="cd-ext-merchant-offers-ctr">
+
+
+        <!-- offer cards of top cashback offers start-->
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-OAvqjHcAns_OAvqjHcAns">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-OAvqjHcAns_OAvqjHcAns" data-store-seo="bookmyshow">
+                    <img src="./Java Programming Cheatsheet_files/bookmyshow-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/bookmyshow?h=OAvqjHcAns&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="OAvqjHcAns" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Buy 1 &amp; Get 1 Free on Movie Tickets (Select Bank Cards)</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Flat
+                                ₹
+                                5 cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;bookmyshow?h&#x3D;OAvqjHcAns&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="OAvqjHcAns" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="OAvqjHcAns_OAvqjHcAns">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-HMHqskHcFs_HMHqskHcFs">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-HMHqskHcFs_HMHqskHcFs" data-store-seo="amazon">
+                    <img src="./Java Programming Cheatsheet_files/amazon-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/amazon?h=HMHqskHcFs&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="HMHqskHcFs" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Shop Using Visa Debit Card &amp; Get 10% Cashback</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                
+                                6% cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity">Valid till 31st Oct</div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;amazon?h&#x3D;HMHqskHcFs&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="HMHqskHcFs" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="HMHqskHcFs_HMHqskHcFs">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-vtppcSnSps_vtppcSnSps">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-vtppcSnSps_vtppcSnSps" data-store-seo="dominos">
+                    <img src="./Java Programming Cheatsheet_files/dominos-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/dominos?h=vtppcSnSps&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="vtppcSnSps" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">2 Medium Hand Tossed Pizzas of Rs. 295 for Rs. 199 Each</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Flat
+                                ₹
+                                25 cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;dominos?h&#x3D;vtppcSnSps&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="vtppcSnSps" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="vtppcSnSps_vtppcSnSps">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-MXvxPZZqss_MXvxPZZqss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-MXvxPZZqss_MXvxPZZqss" data-store-seo="bookmyshow">
+                    <img src="./Java Programming Cheatsheet_files/bookmyshow-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/bookmyshow?h=MXvxPZZqss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="MXvxPZZqss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Buy 1 &amp; Get 1 Free on Golmaal Again Movie Tickets (Select Bank Cards)</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Flat
+                                ₹
+                                5 cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;bookmyshow?h&#x3D;MXvxPZZqss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="MXvxPZZqss" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="MXvxPZZqss_MXvxPZZqss">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-onqJMZaNss_onqJMZaNss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-onqJMZaNss_onqJMZaNss" data-store-seo="dominos">
+                    <img src="./Java Programming Cheatsheet_files/dominos-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/dominos?h=onqJMZaNss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="onqJMZaNss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Gift Vouchers: Physical Voucher and Electronic Voucher</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Flat
+                                ₹
+                                25 cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;dominos?h&#x3D;onqJMZaNss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="onqJMZaNss" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="onqJMZaNss_onqJMZaNss">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-XxHjxXZrFs_XxHjxXZrFs">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-XxHjxXZrFs_XxHjxXZrFs" data-store-seo="mobikwik">
+                    <img src="./Java Programming Cheatsheet_files/mobikwik-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/mobikwik?h=XxHjxXZrFs&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="XxHjxXZrFs" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Exclusive: Flat Rs. 50 SuperCash on Recharges/Bill Payments of Minimum Rs. 75</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                
+                                5% cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;mobikwik?h&#x3D;XxHjxXZrFs&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="XxHjxXZrFs" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="XxHjxXZrFs_XxHjxXZrFs">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-PxZZit32ss_PxZZit32ss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-PxZZit32ss_PxZZit32ss" data-store-seo="makemytrip">
+                    <img src="./Java Programming Cheatsheet_files/makemytrip-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/makemytrip?h=PxZZit32ss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="PxZZit32ss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Upto Rs. 2000 Cashback on Domestic Flight Bookings</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                ₹
+                                337 cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;makemytrip?h&#x3D;PxZZit32ss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="PxZZit32ss" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="PxZZit32ss_PxZZit32ss">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card " id="cd-ext-j-activated-lvonS2rnXs_lvonS2rnXs">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-lvonS2rnXs_lvonS2rnXs" data-store-seo="foodpanda">
+                    <img src="./Java Programming Cheatsheet_files/foodpanda-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/foodpanda?h=lvonS2rnXs&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="lvonS2rnXs" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">CD Exclusive: Flat 40% Off on All Food Orders (New Users)</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                ₹
+                                75 cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity">Valid till 31st Oct</div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;foodpanda?h&#x3D;lvonS2rnXs&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="lvonS2rnXs" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                    <div class="cd-ext-code-ctr cd-ext-hide">
+                        <div class="cd-ext-code-title">COUPON CODE:</div>
+                        <div class="cd-ext-code-value">Get Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">COPIED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="lvonS2rnXs_lvonS2rnXs">Get Code</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-psFp3Fqyss_psFp3Fqyss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-psFp3Fqyss_psFp3Fqyss" data-store-seo="flipkart">
+                    <img src="./Java Programming Cheatsheet_files/flipkart-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/flipkart?h=psFp3Fqyss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="psFp3Fqyss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Deal of the Day: Upto 90% Off on Various Products</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                
+                                7% cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;flipkart?h&#x3D;psFp3Fqyss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="psFp3Fqyss" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="psFp3Fqyss_psFp3Fqyss">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-yrXOMykPss_yrXOMykPss">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-yrXOMykPss_yrXOMykPss" data-store-seo="amazon">
+                    <img src="./Java Programming Cheatsheet_files/amazon-top-store-logo.jpg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/amazon?h=yrXOMykPss&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="yrXOMykPss" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Deal of the Day: Upto 85% Off on Deals Every Hour</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                
+                                6% cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;amazon?h&#x3D;yrXOMykPss&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="yrXOMykPss" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="yrXOMykPss_yrXOMykPss">Get Deal</div>
+
+        </div>
+        <div class="cd-ext-offer-card  cd-ext-j-top-cb-coupons-only " id="cd-ext-j-activated-XyFZt2Htps_XyFZt2Htps">
+            <div class="cd-ext-offer-left-ctr cd-ext-top-offer-left-ctr">
+                <div class="cd-ext-offer-store-logo" id="cd-ext-XyFZt2Htps_XyFZt2Htps" data-store-seo="myntra">
+                    <img src="./Java Programming Cheatsheet_files/myntra-top-store-logo.jpeg" class="cd-ext-top-offer-logo">
+                </div>
+                <div class="cd-ext-offer-bottom-section">
+                    <a href="https://www.coupondunia.in/myntra?h=XyFZt2Htps&amp;reg_id=AbqkC70otGvl3Tt&amp;source=CHROME_BEXT" target="_blank" data-offerid="XyFZt2Htps" class="cd-ext-a cd-ext-offer-link">
+                        <div class="cd-ext-two-truncate cd-ext-top-offer-description cd-ext-div">Half Price Store: Flat 50% Off on Everything</div>
+                    </a>
+                    <div class="cd-ext-top-cashback-details">
+                        <div class="cd-ext-cb-div">
+                            <img class="cd-ext-img cd-ext-cb-img" src="chrome-extension://iledpgbdhgeianadegpmahgpieckekfp/resources/img/cb-icon.png">
+                            <div class="cd-ext-offer-cb-details cd-ext-offer-cb-string">
+                                Upto
+                                
+                                6% cashback
+                            </div>
+                        </div>
+                        <div class="cd-ext-offer-validity"></div>
+                        <!--<a href="https:&#x2F;&#x2F;www.coupondunia.in&#x2F;myntra?h&#x3D;XyFZt2Htps&amp;reg_id&#x3D;AbqkC70otGvl3Tt&amp;source&#x3D;CHROME_BEXT"  target="_blank" data-offerid="XyFZt2Htps" class="cd-ext-view-details">View details </a>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cd-ext-copied-btn cd-ext-hide">ACTIVATED</div>
+            <div tabindex="-1" class="cd-ext-get-code-btn cd-ext-get-deal-btn  cd-ext-btn-deal cd-ext-j-top-cashback-offer-ctr" id="XyFZt2Htps_XyFZt2Htps">Get Deal</div>
+
+        </div>
+        <!-- offer cards of top cashback offers end-->
+
+
+        <!-- design when there are no offers for the selected filter-->
+        <div class="cd-ext-div cd-ext-hide" id="cd-ext-j-filter-top-cb-tab">
+            <div class="cd-ext-div cd-ext-no-offers-img"></div>
+            <div class="cd-ext-div cd-ext-no-offers-text">
+                <p class="cd-ext-p"> There are no results for the selected filter.</p>
+            </div>
+        </div>
+
+    </div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Compare Tab Data-->
+    <div class="cd-ext-main-tab-content cd-ext-price-comparision-ctr cd-ext-hide">
+        <!-- Tabs under PC start-->
+        <div class="cd-ext-notify-tabs-ctr cd-ext-compare-tab-div-content">
+            <div id="cd-ext-compare-compare-price-stab" class="cd-ext-compare-tab cd-ext-main-tab-selected cd-ext-div" data-tab="cd-ext-compare-compare-price">
+                <div class="cd-ext-notify-tab-title">Compare Price</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+            <div id="cd-ext-compare-price-alerts-stab" class="cd-ext-compare-tab cd-ext-div" data-tab="cd-ext-compare-price-alerts">
+                <div class="cd-ext-notify-tab-title">My Price Alerts</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+        </div>
+        <!-- Tabs under PC end-->
+        <!--<PC CONTENT START>-->
+        <div class="cd-ext-compare-tab-div-content">
+            <div id="cdext-price-comparision-data-container" class="cd-ext-compare-ctr cd-ext-compare-tab-content cd-ext-compare-compare-price">
+                <div class="cd-ext-pc-req-block">
+                    <div class="cd-ext-pc-info">Price Comparison not available for this website.</div>
+                    <!--<div class="cd-ext-req-pc">Request Price Comparison</div>-->
+                    <div class="cd-ext-pc-post-submit cd-ext-hide">You request has been submitted.</div>
+                    <div class="cd-ext-pc-req-err cd-ext-hide"> Some Error Occured!</div>
+                </div>
+            </div>
+        </div>
+        <div class="cd-ext-compare-tab-div-content">
+            <div id="cdext-price-alerts-container" class="cd-ext-compare-tab-content cd-ext-hide cd-ext-compare-price-alerts "><div class="cd-ext-pc-my-pc">
+	<div class="cd-ext-div">
+		<div class="cd-ext-div cd-ext-no-offers-img"></div>
+		<div class="cd-ext-div cd-ext-no-offers-text">
+			<p class="cd-ext-p">Looks like you have not subscribed for any price alerts.</p>
+		</div>
+	</div>
+</div>
+</div>
+        </div>
+
+        <!--<PC CONTENT END>-->
+        <!--<div id="cdext-price-comparision-data-container" class="cd-ext-main-tab-content cd-ext-compare-ctr cd-ext-hide">-->
+            <!--&lt;!&ndash;<div class="cd-ext-sk-folding-cube cd-ext-div">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="cd-ext-sk-cube1 cd-ext-sk-cube cd-ext-div"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="cd-ext-sk-cube2 cd-ext-sk-cube cd-ext-div"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="cd-ext-sk-cube4 cd-ext-sk-cube cd-ext-div"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="cd-ext-sk-cube3 cd-ext-sk-cube cd-ext-div"></div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="cd-ext-pc-req-block">-->
+                <!--<div class="cd-ext-pc-info">DEFAULT:There is currently no Price Comparison Data for this product.</div>-->
+                <!--<div class="cd-ext-req-pc">Request Price Comparison</div>-->
+                <!--<div class="cd-ext-pc-post-submit cd-ext-hide">You request has been submitted.</div>-->
+                <!--<div class="cd-ext-pc-req-err cd-ext-hide"> Some Error Occured!</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+
+
+    <!-- Bell Notificatoin Tabs -->
+    <div class="cd-ext-main-tab-content cd-ext-notification-ctr cd-ext-hide">
+        <!-- Tabs under Bell notification start-->
+        <div class="cd-ext-notify-tabs-ctr cd-ext-notification-tab-div-content">
+            <div id="cd-ext-notify-my-activities-stab" class="cd-ext-notify-tab cd-ext-main-tab-selected cd-ext-div" data-tab="cd-ext-notify-my-activities">
+                <div class="cd-ext-notify-tab-title">My Activities <span class="cd-ext-notifiy-activities" style="">13</span></div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+            <div id="cd-ext-notify-special-offers-stab" class="cd-ext-notify-tab" data-tab="cd-ext-notify-special-offers">
+                <div class="cd-ext-notify-tab-title">Special Offers</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+            <div id="cd-ext-notify-settings-stab" class="cd-ext-notify-tab" data-tab="cd-ext-notify-settings">
+                <div class="cd-ext-notify-tab-title">Settings</div>
+                <div class="cd-ext-arrow-down"></div>
+            </div>
+        </div>
+        <!-- Tabs under Bell notification end-->
+        <!-- My activities Tab -->
+        <div class="cd-ext-notification-tab-div-content">
+            <div class="cd-ext-notify-tab-content cd-ext-notify-my-activities">
+                <div class="cd-ext-activities-logged-out cd-ext-hide">
+                    <div class="cd-ext-activities-not-logged-in-msg">You are not logged in!</div>
+                    <div class="cd-ext-activities-log-in-msg">Sorry, you need to Log In or Sign Up to CouponDunia to view your recent activities.</div>
+                    <div class="cd-ext-sign-in-btn cd-ext-j-user-login">LOG IN</div>
+                    <div class="cd-ext-sign-in-btn cd-ext-sogn-up-btn cd-ext-j-user-signup">SIGN UP</div>
+                </div>
+                <div id="cdext-cashback-notification-container" class="cd-ext-activities-logged-in cd-ext-notification-tabs cd-ext-show"><div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for your purchase at Domino's Pizza on 13th October, 2017.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th October, 2017</div>
+    </div>
+    <a id="8031506" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Domino's Pizza has been tracked for an estimated cashback of Rs. 25. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th October, 2017</div>
+    </div>
+    <a id="8031505" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for your purchase at Domino's Pizza on 13th October, 2017.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th October, 2017</div>
+    </div>
+    <a id="8031470" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Domino's Pizza has been tracked for an estimated cashback of Rs. 25. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th October, 2017</div>
+    </div>
+    <a id="8031469" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for your purchase at Domino's Pizza on 13th October, 2017.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th October, 2017</div>
+    </div>
+    <a id="8031451" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Domino's Pizza has been tracked for an estimated cashback of Rs. 25. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th October, 2017</div>
+    </div>
+    <a id="8031450" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for your purchase at Domino's Pizza on 12th October, 2017.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8022900" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Domino's Pizza has been tracked for an estimated cashback of Rs. 25. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8022898" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for your purchase at Domino's Pizza on 12th October, 2017.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8022519" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Domino's Pizza has been tracked for an estimated cashback of Rs. 25. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8022518" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for your purchase at Domino's Pizza on 12th October, 2017.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8021924" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Domino's Pizza has been tracked for an estimated cashback of Rs. 25. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8021922" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert cd-ext-notification-unread">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">You've earned 4 raffle tickets</div>
+        <div class="cd-ext-notification-desc">You've won 4 raffle tickets for downloading browser extension for first time.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">12th October, 2017</div>
+    </div>
+    <a id="8021525" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Payments Update</div>
+        <div class="cd-ext-notification-desc">Your PayTM transfer made on October 3rd, 2017 for Rs. 350 is successful! Enjoy :)<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">3rd October, 2017</div>
+    </div>
+    <a id="7934952" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Amazon cashback is cancelled!</div>
+        <div class="cd-ext-notification-desc">Your transaction made at Amazon on 26 July, 2017 has been cancelled by the merchant. Therefore we are unable to offer you any cashback on this transaction.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">3rd October, 2017</div>
+    </div>
+    <a id="7934220" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Flipkart cashback is confirmed!</div>
+        <div class="cd-ext-notification-desc">Your transaction id CDDDF37F2282 from Flipkart has been confirmed for Rs. 147. You can withdraw your Available Balance immediately.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">13th September, 2017</div>
+    </div>
+    <a id="7834679" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">RummyCircle cashback is cancelled!</div>
+        <div class="cd-ext-notification-desc">Your transaction made at RummyCircle on 28 June, 2017 has been cancelled by the merchant. Therefore we are unable to offer you any cashback on this transaction.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">29th August, 2017</div>
+    </div>
+    <a id="7777183" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">RummyCircle cashback is confirmed!</div>
+        <div class="cd-ext-notification-desc">Your transaction id CD13A70D3993 from RummyCircle has been confirmed for Rs. 210. You can withdraw your Available Balance immediately.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">29th August, 2017</div>
+    </div>
+    <a id="7777040" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Amazon has been tracked for an estimated cashback of Rs. 0. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">28th July, 2017</div>
+    </div>
+    <a id="7556273" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at Flipkart has been tracked for an estimated cashback of Rs. 147. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">10th July, 2017</div>
+    </div>
+    <a id="7400572" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at RummyCircle has been tracked for an estimated cashback of Rs. 150. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">28th June, 2017</div>
+    </div>
+    <a id="7347690" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Ambuj, We found your cashback!</div>
+        <div class="cd-ext-notification-desc">Your transaction at RummyCircle has been tracked for an estimated cashback of Rs. 210. Please note that tracked cashback is only an estimation and may change at the time of confirmation.<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">28th June, 2017</div>
+    </div>
+    <a id="7346620" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Referral Update</div>
+        <div class="cd-ext-notification-desc">Woohoo! Ambuj  signed up using your referral code! Thanks for spreading the cheer!<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">27th June, 2017</div>
+    </div>
+    <a id="7337415" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Referral Update</div>
+        <div class="cd-ext-notification-desc">Woohoo! Ambuj  signed up using your referral code! Thanks for spreading the cheer!<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">27th June, 2017</div>
+    </div>
+    <a id="7337371" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+<div class="cd-ext-notification-alert ">
+    <div class="cd-ext-notification-details cd-ext-cb-notification">
+        <div class="cd-ext-notification-title">Referral Update</div>
+        <div class="cd-ext-notification-desc">Woohoo! Ambuj  signed up using your referral code! Thanks for spreading the cheer!<span class="cd-ext-notification-bold"></span></div>
+        <!--<div class="cd-ext-notifcation-time">24th August, 2016</div>-->
+        <div class="cd-ext-notifcation-time">27th June, 2017</div>
+    </div>
+    <a id="7337343" href="https://www.coupondunia.in/profile/notifications" target="_blank">
+        <div class="cd-ext-notification-btn">VISIT SITE</div>
+    </a>
+</div>
+
+
+<a href="https://www.coupondunia.in/profile/notifications" target="_blank">
+    <div class="cd-ext-notification-alert cd-ext-view-all-user-notif">
+        <span>View all</span>
+    </div>
+</a>
+</div>
+            </div>
+        </div>
+        <!-- My activities Tab end-->
+
+        <!-- special offers tab start-->
+        <div class="cd-ext-notification-tab-div-content">
+            <div id="cdext-special_offers-container" class="cd-ext-notify-tab-content cd-ext-hide cd-ext-notify-special-offers "><div class="cd-ext-div">
+    <div class="cd-ext-div cd-ext-no-offers-img"></div>
+    <div class="cd-ext-div cd-ext-no-offers-text">
+        <p class="cd-ext-p">Looks like there are currently no offers to show.</p>
+        <p class="cd-ext-p">We'll let you know once we have something for you in here.</p>
+    </div>
+</div>
+
+<div class="cd-ext-notify-offer-ctr cd-ext-offer-active cd-ext-special-offer-card cd-ext-div  cd-ext-special-offers-present cd-ext-notification-tabs">
+<!-- Active Special Offers -->
+</div>
+</div>
+        </div>
+        <!--special offers tab end-->
+
+
+
+        <!-- settings Tab start-->
+        <div class="cd-ext-notification-tab-div-content">
+            <div id="cd-ext-settings-container" class="cd-ext-notify-tab-content cd-ext-hide cd-ext-notify-settings cd-ext-settings-tab-background">    <div class="cd-ext-notify-settings-title">Notification Settings</div>
+    <div class="cd-ext-notify-settings-subtitle">Toggle notifications for the following options -</div>
+    <div class="cd-ext-settings-ctr">
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">Coupons and Cashback Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="coupons_and_deals" id="cd-ext-slideOne">
+                <label for="cd-ext-slideOne"></label>
+            </div>
+        </div>
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">User Activity Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="cashback" id="cd-ext-slideTwo">
+                <label for="cd-ext-slideTwo"></label>
+            </div>
+        </div>
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">Special Offers Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="special_offers" id="cd-ext-slideThree">
+                <label for="cd-ext-slideThree"></label>
+            </div>
+        </div>
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">Price Comparison Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="price_comparison" id="cd-ext-slideFour">
+                <label for="cd-ext-slideFour"></label>
+            </div>
+        </div>
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">Google Header Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="gserp_header_notif" id="cd-ext-slideFive">
+                <label for="cd-ext-slideFive"></label>
+            </div>
+        </div>
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">Google Result Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="gserp_list_notif" id="cd-ext-slideSix">
+                <label for="cd-ext-slideSix"></label>
+            </div>
+        </div>
+        <div class="cd-ext-toggle-section">
+            <div class="cd-ext-toggle-title cd-ext-div">Price Drop Alert Notifications</div>
+            <div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">
+                <input class="cd-ext-switch-input" value="None" type="checkbox" name="price_alert" id="cd-ext-slideSeven">
+                <label for="cd-ext-slideSeven"></label>
+            </div>
+        </div>
+        <!--<div class="cd-ext-toggle-section">-->
+            <!--<div class="cd-ext-toggle-title cd-ext-div">CouponDunia Stickers</div>-->
+            <!--<div class="cd-ext-toggle-cb cd-ext-ext-slide cd-ext-div">-->
+                <!--<input class="cd-ext-switch-input" value="None" type="checkbox" name="show_cd_sticker" id="cd-ext-slideSix">-->
+                <!--<label for="cd-ext-slideSix"></label>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div class="cd-ext-settings-btn-ctr">
+        <div id="cdext-save-settings" class="cd-ext-settings-save">SAVE</div>
+        <div id="cdext-cancel-settings" class="cd-ext-settings-cancel">CANCEL</div>
+    </div>
+</div>
+            <div class="cd-ext-notify-tab-content cd-ext-settings-save-text cd-ext-hide">Your settings have been updated successfully.<span id="cd-ext-close-notify-setting">×</span></div>
+        </div>
+        <!-- settings Tab end-->
+    </div></div><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 159px; display: none; top: 919px; left: 23px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>
