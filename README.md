@@ -6,6 +6,7 @@
 + **Python Tutorial by google**
 > https://developers.google.com/edu/python/strings
 > https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs
+> https://pyformat.info/
 
 + **Java Tutorial by Durga sir**
 > https://www.youtube.com/watch?v=eTXd89t8ngI&list=PLcj5PWxT3sFQqY7BheqtR9fUsPUv4I8sB
