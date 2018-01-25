@@ -3,6 +3,9 @@
 + **Markdown for Github**
 > https://guides.github.com/features/mastering-markdown
 
++ **emoji in github**
+> https://www.webpagefx.com/tools/emoji-cheat-sheet
+
 + **Android App Idea**
 > https://blog.mindorks.com/android-amazing-open-source-apps-e44f520593cc
 
