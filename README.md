@@ -18,6 +18,12 @@
 
 > https://docs.python.org/3.6/library/intro.html
 
+> https://www.hackerearth.com/practice/python/getting-started/input-and-output/tutorial/
+
+> https://www.programiz.com/python-programming/first-program
+
+> https://www.hackerrank.com/domains/python/py-introduction
+
 + **Java Tutorial by Durga sir**
 > https://www.youtube.com/watch?v=eTXd89t8ngI&list=PLcj5PWxT3sFQqY7BheqtR9fUsPUv4I8sB
 
