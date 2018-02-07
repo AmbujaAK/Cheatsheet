@@ -29,6 +29,7 @@
 
 + **Artificial Intelligence tutorial**
 > https://www.youtube.com/watch?v=J7LqgglEfQw&list=PL9zFgBale5fug7z_YlD9M0x8gdZ7ziXen
+
 > http://intelligence.worldofcomputing.net/ai-search/depth-first-search.html#.WmGFjstX7qA
 
 + **Some Idea on college Projects**
