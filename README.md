@@ -24,6 +24,8 @@
 
 > https://www.hackerrank.com/domains/python/py-introduction
 
+> http://book.pythontips.com/en/latest/enumerate.html
+
 + **Java Tutorial by Durga sir**
 > https://www.youtube.com/watch?v=eTXd89t8ngI&list=PLcj5PWxT3sFQqY7BheqtR9fUsPUv4I8sB
 
